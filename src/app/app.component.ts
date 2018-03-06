@@ -6,7 +6,7 @@ import { Angular2TokenService } from 'angular2-token';
 
 
 @Component({
-  templateUrl: 'app.html',
+  templateUrl: 'app.html'
 })
 export class MyApp {
   rootPage:any = 'LoginPage';
