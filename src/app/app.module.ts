@@ -3,6 +3,9 @@ import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
+import { Angular2TokenService } from 'angular2-token';
+import { HttpModule } from '@angular/http';
+import { RouterModule } from '@angular/router';
 
 import { MyApp } from './app.component';
 
@@ -12,6 +15,8 @@ import { MyApp } from './app.component';
   ],
   imports: [
     BrowserModule,
+    HttpModule,
+    RouterModule,
     IonicModule.forRoot(MyApp)
   ],
   bootstrap: [IonicApp],
@@ -19,6 +24,7 @@ import { MyApp } from './app.component';
     MyApp
   ],
   providers: [
+    Angular2TokenService,
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
