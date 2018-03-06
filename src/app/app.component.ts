@@ -4,19 +4,19 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { Angular2TokenService } from 'angular2-token';
 
-
 @Component({
   templateUrl: 'app.html'
 })
+
 export class MyApp {
   rootPage:any = 'LoginPage';
 
   constructor( public  platform: Platform,
                public  statusBar: StatusBar,
                public  splashScreen: SplashScreen,
-               private _tokenService: Angular2TokenService ) {
+               private tokenService: Angular2TokenService ) {
 
-    this._tokenService.init({
+    this.tokenService.init({
         apiBase:                    'http://localhost:3000',
         apiPath:                    null,
 
@@ -53,14 +53,6 @@ export class MyApp {
             }
         }
     });
-
-    this._tokenService.signIn({
-        email:    'user_1@example.de',
-        password: 'password'
-    }).subscribe(
-        res =>      console.log(res),
-        error =>    console.log(error)
-    );
 
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
