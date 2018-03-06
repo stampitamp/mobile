@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { Angular2TokenService } from 'angular2-token';
+
 
 /**
  * Generated class for the Tab1Page page.
@@ -15,11 +17,18 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class Tab1Page {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController,
+              public navParams: NavParams,
+              private tokenService: Angular2TokenService) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad Tab1Page');
+  }
+
+  doLogout() {
+    this.tokenService.signOut();
+    this.navCtrl.setRoot('LoginPage');
   }
 
 }
