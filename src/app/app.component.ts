@@ -17,7 +17,7 @@ export class MyApp {
                private tokenService: Angular2TokenService ) {
 
     this.tokenService.init({
-        apiBase:                    'http://localhost:3000',
+        apiBase:                    'https://rails-devise-token-seed.herokuapp.com',
         apiPath:                    null,
 
         signInPath:                 'auth/sign_in',
