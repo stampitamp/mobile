@@ -38,6 +38,8 @@ export class LoginPage {
   doLogin() {
     this.tokenService.signIn(this.loginForm.value).subscribe(
         res =>  {
+          console.log(res);
+          console.log(this.tokenService.userSignedIn());
           if(this.tokenService.userSignedIn()){
             this.navCtrl.setRoot('MenuPage');
           }

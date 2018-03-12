@@ -10,38 +10,25 @@
 </ion-header>
 
 <ion-content padding>
-    <ion-card>
+  <ion-card *ngFor='let card of cards'>
     <ion-card-header>
        <button ion-item>
-      <ion-icon name="cafe" item-start></ion-icon> Dat Backhus café
+      <ion-icon name="cafe" item-start></ion-icon> {{ card.card.name }}
     </button>
     </ion-card-header>
     <ion-card-content>
-      5/10
+      {{card.current_stamps}}/{{card.card.stamps_count}}
     </ion-card-content>
   </ion-card>
 
-   <ion-card>
+  <!-- <ion-card *ngFor='let item of items'>
     <ion-card-header>
-       <button ion-item>
-      <ion-icon name="cart" item-start></ion-icon> Budnikowski
-    </button>
+      {{item.title}}
     </ion-card-header>
     <ion-card-content>
-      3/10
+      The British use the term "header", but the American term "head-shot" the English simply refuse to adopt.
     </ion-card-content>
-  </ion-card>
-
-  <ion-card>
-    <ion-card-header>
-       <button ion-item>
-      <ion-icon name="brush" item-start></ion-icon> Boesner
-    </button>
-    </ion-card-header>
-    <ion-card-content>
-      4/5
-    </ion-card-content>
-  </ion-card>
+  </ion-card> -->
 
 
 
