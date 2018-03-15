@@ -1,7 +1,7 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>login</ion-title>
+    <ion-title>register</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -9,7 +9,7 @@
 
 <ion-content padding>
 
-  <form [formGroup]="loginForm" (ngSubmit)="doLogin($event)">
+  <form [formGroup]="registerForm" (ngSubmit)="doRegister($event)">
     <ion-list>
 
       <ion-item>
@@ -26,16 +26,23 @@
         </ion-input>
       </ion-item>
 
+      <ion-item>
+        <ion-input  type=             "password"
+                    formControlName=  "passwordConfirmation"
+                    placeholder=      "Password Confirmation">
+        </ion-input>
+      </ion-item>
+
     </ion-list>
 
     <div padding>
-      <button block type="submit">Login</button>
+      <button block type="submit">Register</button>
     </div>
   </form>
 
-  <form (ngSubmit)="switchToRegister($event)">
+  <form (ngSubmit)="switchToLogin($event)">
     <div padding>
-      <button block type="submit">Registration</button>
+      <button block type="submit">Login</button>
     </div>
   </form>
 

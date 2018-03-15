@@ -6,14 +6,15 @@ import { Angular2TokenService } from 'angular2-token';
 
 @IonicPage()
 @Component({
-  selector: 'page-login',
-  templateUrl: 'login.html',
+  selector: 'page-register',
+  templateUrl: 'register.html',
 })
-export class LoginPage {
+export class RegisterPage {
 
-  public loginForm = this.fb.group({
+  public registerForm = this.fb.group({
     email: ["", Validators.required],
-    password: ["", Validators.required]
+    password: ["", Validators.required],
+    passwordConfirmation: ["", Validators.required]
   });
 
   constructor(public navCtrl: NavController,
@@ -28,8 +29,9 @@ export class LoginPage {
     }
   }
 
-  doLogin() {
-    this.tokenService.signIn(this.loginForm.value).subscribe(
+  doRegister(e) {
+    console.log(e);
+    this.tokenService.registerAccount(this.registerForm.value).subscribe(
         res =>  {
           console.log(res);
           console.log(this.tokenService.userSignedIn());
@@ -37,12 +39,15 @@ export class LoginPage {
             this.navCtrl.setRoot('MenuPage');
           }
         },
-        error => console.log(error),
+        error => {
+          console.log(error);
+          this.navCtrl.setRoot('RegisterPage');
+        },
     );
   }
 
-  switchToRegister() {
-    this.navCtrl.setRoot('RegisterPage');
+  switchToLogin() {
+    this.navCtrl.setRoot('LoginPage');
   }
 
 }
