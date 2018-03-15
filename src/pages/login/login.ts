@@ -4,13 +4,6 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { Angular2TokenService } from 'angular2-token';
 
 
-/**
- * Generated class for the LoginPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-
 @IonicPage()
 @Component({
   selector: 'page-login',
@@ -46,6 +39,10 @@ export class LoginPage {
         },
         error => console.log(error),
     );
+  }
+
+  switchToRegister() {
+    this.navCtrl.setRoot('RegisterPage');
   }
 
 }

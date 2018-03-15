@@ -17,7 +17,7 @@ export class MyApp {
                private tokenService: Angular2TokenService ) {
 
     this.tokenService.init({
-        apiBase:                    'https://pacific-scrubland-95509.herokuapp.com/api/v1',
+        apiBase:                    'http://localhost:3000/api/v1',
         apiPath:                    null,
 
         signInPath:                 'auth/sign_in',
