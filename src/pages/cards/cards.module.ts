@@ -1,15 +1,15 @@
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
 import { HttpClientModule } from '@angular/common/http';
-import { Tab1Page } from './tab1';
+import { CardsPage } from './cards';
 
 @NgModule({
   declarations: [
-    Tab1Page,
+    CardsPage,
   ],
   imports: [
     HttpClientModule,
-    IonicPageModule.forChild(Tab1Page),
+    IonicPageModule.forChild(CardsPage),
   ],
 })
 export class Tab1PageModule {}

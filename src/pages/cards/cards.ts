@@ -4,12 +4,11 @@ import { Angular2TokenService } from 'angular2-token';
 
 @IonicPage()
 @Component({
-  selector: 'page-tab1',
-  templateUrl: 'tab1.html',
+  selector: 'page-cards',
+  templateUrl: 'cards.html',
 })
 
-export class Tab1Page {
-
+export class CardsPage {
 
   cards: any;
 
