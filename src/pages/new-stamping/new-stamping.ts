@@ -30,21 +30,14 @@ export class NewStampingPage {
       this.navCtrl.push('NewVendingSessionPage', { callback: this.getAdressId });
     } else {
 
-      var requestOptions: any = {
-        params: new HttpParams().set('address_id', this.address_id)
-      };
-
-      console.log('requestOptions');
-      console.log(requestOptions);
-
-      this.tokenService.get('stampings/new', requestOptions).subscribe(
+      this.tokenService.get('stampings/new/?address_id=' + this.address_id).subscribe(
         res =>  {
-          console.log('get cards');
+          console.log('get new stamping cards');
           console.log(res);
           this.cards = res.json();
         },
         error => {
-          console.log('error get cards:');
+          console.log('error get new stamping cards:');
           console.log(error);
         }
       );
@@ -53,17 +46,14 @@ export class NewStampingPage {
   }
 
   createStampings() {
-    var requestOptions: any = {
-      params: new HttpParams().set('address_id', this.address_id)
-                              .set('count', this.stamps_count.toString())
-                              .set('card_id', this.card_id)
-                              .set('email_of_receiver', this.email)
-    };
 
-    console.log('requestOptions');
-    console.log(requestOptions);
+    const params =  { count:       this.stamps_count,
+                      card_id:     this.card_id,
+                      address_id:  this.address_id,
+                      email:       this.email,
+                    }
 
-    this.tokenService.post('stampings', requestOptions).subscribe(
+    this.tokenService.post('stampings', params ).subscribe(
       res =>  {
         console.log('post stampings');
         console.log(res);
