@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Angular2TokenService } from 'angular2-token';
-import { HttpParams } from '@angular/common/http';
 
 
 @IonicPage()
