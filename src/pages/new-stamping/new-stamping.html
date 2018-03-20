@@ -34,10 +34,9 @@
     </ion-grid>
 
     <ion-item>
-      <ion-label>Select Card</ion-label>
-      <ion-select [(ngModel)]="card_id" cancelText="Nah" okText="Okay!">
+      <ion-select [(ngModel)]="card_id" cancelText="Nah" okText="Okay!" placeholder="Select Card">
         <div *ngFor='let card of cards'>
-          <ion-option value="{{card.id}}">{{card.name}}</ion-option>
+          <ion-option [value]="card.id" selected="false">{{card.name}}</ion-option>
         </div>
       </ion-select>
     </ion-item>
@@ -53,7 +52,7 @@
 
   <div padding>
     <button block (click)="createStampings()"
-                  [disabled]="card_id==undefined||email==''">
+                  [disabled]="card_id==-1||email==''">
       Stamp
     </button>
   </div>

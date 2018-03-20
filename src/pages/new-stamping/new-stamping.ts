@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Angular2TokenService } from 'angular2-token';
 import { HttpParams } from '@angular/common/http';
-import { FormBuilder, Validators, EmailValidator } from '@angular/forms';
 
 
 @IonicPage()
@@ -14,20 +13,18 @@ export class NewStampingPage {
 
   address_id: any;
   stamps_count: 1;
-  card_id: any;
+  card_id: any = -1;
   cards: any;
-  email: string = "";
+  email: string = '';
 
   constructor(public  navCtrl: NavController,
               public  navParams: NavParams,
-              public  fb: FormBuilder,
               private tokenService: Angular2TokenService) {
   }
 
   ionViewWillEnter() {
     console.log('ionViewWillEnter: new-stamping');
-    this.stamps_count = 1;
-    this.card_id = undefined;
+    this.resetView();
 
     if(!this.address_id) {
       this.navCtrl.push('NewVendingSessionPage', { callback: this.getAdressId });
@@ -76,8 +73,7 @@ export class NewStampingPage {
         console.log(error);
       }
     );
-    this.stamps_count = 1;
-    this.email="";
+    this.resetView();
   }
 
   stampCountUp() {
@@ -88,6 +84,8 @@ export class NewStampingPage {
     this.stamps_count--;
   }
 
+  private
+
   getAdressId = (address_id) =>
   {
     return new Promise((resolve, reject) => {
@@ -95,5 +93,11 @@ export class NewStampingPage {
       resolve();
     });
   };
+
+  resetView() {
+    this.stamps_count = 1;
+    this.card_id = -1;
+    this.email="";
+  }
 
 }

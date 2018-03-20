@@ -28,16 +28,17 @@ export class NewVendingSessionPage {
     console.log('ionViewWillEnter new-vending-session')
     this.tokenService.get('vending_session/new').subscribe(
       res =>  {
-        this.address_id = res.json().address_id;
-        console.log('get address_id: ' + this.address_id);
-        if(this.address_id){
-          this.callback(this.address_id).then( ()=>{ this.navCtrl.pop() } );
-        } else {
-          this.addresses = res.json();
+        this.addresses = res.json();
+        console.log('get addresses');
+        console.log(this.addresses);
+
+        if(this.addresses.length == 1) {
+          this.address_id = this.addresses[0].address.id;
+          this.startNewVendingSession();
         }
       },
       error => {
-        console.log('error get:');
+        console.log('error get addresses:');
         console.log(error);
       }
     );
@@ -45,6 +46,11 @@ export class NewVendingSessionPage {
 
   startNewVendingSession() {
     this.callback(this.address_id).then(()=>{ this.navCtrl.pop() });
+  }
+
+  setAddressIdAndRedirectBack() {
+    this.address_id = this.addresses[0].address.id;
+    this.callback(this.address_id).then( ()=>{ this.navCtrl.pop() } );
   }
 
 }
