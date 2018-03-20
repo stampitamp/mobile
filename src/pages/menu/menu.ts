@@ -24,7 +24,7 @@ export class MenuPage {
   pages: PageInterface[] = [
     { title: 'Tarjetas',          pageName: 'TabsPage', tabComponent: 'CardsPage', index: 0, icon: 'albums' },
     { title: 'Mostrar código QR', pageName: 'TabsPage', tabComponent: 'Tab2Page', index: 1, icon: 'finger-print' },
-    { title: 'Generar estampas',  pageName: 'SpecialPage', icon: 'hammer' },
+    { title: 'Generar estampas',  pageName: 'TabsPage', tabComponent: 'NewStampingPage', index: 2, icon: 'hammer' },
   ];
 
   constructor(public navCtrl: NavController) { }

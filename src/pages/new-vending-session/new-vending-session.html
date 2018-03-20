@@ -1,0 +1,30 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>new vending session</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <ion-list>
+    <ion-item>
+      <ion-label>Addresses</ion-label>
+      <ion-select [(ngModel)]="address_id" cancelText="Nah" okText="Okay!">
+        <div *ngFor='let address of addresses'>
+          <ion-option value="{{address.address.id}}">{{address.company_name}} | {{address.address.street}}</ion-option>
+        </div>
+      </ion-select>
+    </ion-item>
+  </ion-list>
+
+  <div padding>
+    <button block (click)="startNewVendingSession()"
+                  [disabled]="address_id==undefined">
+      Start Vending Session
+    </button>
+  </div>
+
+</ion-content>
