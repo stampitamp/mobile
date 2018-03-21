@@ -4,16 +4,18 @@
       <ion-title>Menu</ion-title>
     </ion-toolbar>
   </ion-header>
- 
+
   <ion-content>
     <ion-list>
-      <button ion-item menuClose *ngFor="let p of pages" (click)="openPage(p)">
-          <ion-icon item-start [name]="p.icon" [color]="isActive(p)"></ion-icon>
+      <div *ngFor="let p of pages">
+        <button ion-item menuClose *ngIf="menuItemPermitted(p)" (click)="openPage(p) ">
+          <ion-icon item-start *ngIf="false" [name]="p.icon" [color]="isActive(p)"></ion-icon>
           {{ p.title }}
         </button>
+      </div>
     </ion-list>
   </ion-content>
 </ion-menu>
- 
+
 <!-- main navigation -->
 <ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>

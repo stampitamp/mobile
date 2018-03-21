@@ -11,6 +11,8 @@ import { Angular2TokenService } from 'angular2-token';
 })
 export class LoginPage {
 
+  userParams: any;
+
   public loginForm = this.fb.group({
     email: ["", Validators.required],
     password: ["", Validators.required]
@@ -23,8 +25,8 @@ export class LoginPage {
   }
 
   ngOnInit() {
-    if(this.tokenService.userSignedIn()){
-      this.navCtrl.setRoot('MenuPage');
+    if(this.tokenService.userSignedIn() && ! (JSON.stringify(this.navParams['data'] === JSON.stringify({})))) {
+      this.navCtrl.setRoot('MenuPage', this.userParams);
     }
   }
 
@@ -34,8 +36,8 @@ export class LoginPage {
           console.log(res);
           console.log(this.tokenService.userSignedIn());
           if(this.tokenService.userSignedIn()){
-            this.navCtrl.setRoot('MenuPage');
-          }
+            this.userParams = res;
+            this.navCtrl.setRoot('MenuPage', this.userParams);          }
         },
         error => console.log(error),
     );

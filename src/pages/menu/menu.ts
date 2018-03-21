@@ -1,7 +1,8 @@
 import { Component, ViewChild } from '@angular/core';
-import { IonicPage, NavController, Nav } from 'ionic-angular';
+import { IonicPage, NavController, Nav, NavParams } from 'ionic-angular';
 
 export interface PageInterface {
+  id: number;
   title: string;
   pageName: string;
   tabComponent?: any;
@@ -18,16 +19,22 @@ export class MenuPage {
   // Basic root for our content view
   rootPage = 'TabsPage';
 
+  user: any;
+
   // Reference to the app's root nav
   @ViewChild(Nav) nav: Nav;
 
   pages: PageInterface[] = [
-    { title: 'Tarjetas',          pageName: 'TabsPage', tabComponent: 'CardsPage', index: 0, icon: 'albums' },
-    { title: 'Mostrar código QR', pageName: 'TabsPage', tabComponent: 'Tab2Page', index: 1, icon: 'finger-print' },
-    { title: 'Generar estampas',  pageName: 'TabsPage', tabComponent: 'NewStampingPage', index: 2, icon: 'hammer' },
+    { id: 1, title: 'Tarjetas',          pageName: 'TabsPage', tabComponent: 'CardsPage', index: 0, icon: 'albums' },
+    { id: 2, title: 'Mostrar código QR', pageName: 'TabsPage', tabComponent: 'Tab2Page', index: 1, icon: 'finger-print' },
+    { id: 3, title: 'Generar estampas',  pageName: 'TabsPage', tabComponent: 'NewStampingPage', index: 2, icon: 'hammer' },
   ];
 
-  constructor(public navCtrl: NavController) { }
+  constructor(public navCtrl: NavController,
+              public navParams: NavParams) {
+
+    this.user = navParams['data'].json()['data'];
+  }
 
   openPage(page: PageInterface) {
     let params = {};
@@ -63,6 +70,10 @@ export class MenuPage {
       return 'primary';
     }
     return;
+  }
+
+  menuItemPermitted(page: PageInterface) : boolean {
+    return page.id != 3 || this.user['is_vendor'];
   }
 
 }
