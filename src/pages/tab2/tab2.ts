@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { Angular2TokenService } from 'angular2-token';
 
 /**
  * Generated class for the Tab2Page page.
@@ -14,9 +15,17 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'tab2.html',
 })
 export class Tab2Page {
+  createdCode = null;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, 
+              public navParams: NavParams,
+              private tokenService: Angular2TokenService) {
   }
+
+  ionViewWillEnter() {
+    this.createdCode = this.tokenService.currentUserData.email;
+  }
+
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad Tab2Page');

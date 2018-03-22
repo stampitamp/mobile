@@ -38,21 +38,11 @@
         </div>
       </ion-select>
     </ion-item>
-
-    <ion-item>
-        <ion-input  type=             "email"
-                    placeholder=      "Email"
-                    [(ngModel)]=      "email"
-                    >
-        </ion-input>
-      </ion-item>
   </ion-list>
 
-  <div padding>
-    <button block (click)="createStampings()"
-                  [disabled]="card_id==-1||email==''">
-      Stamp
-    </button>
-  </div>
+  <button ion-button full icon-left (click)="scanCode()" [disabled]="card_id==-1" color="primary">
+    <ion-icon name="qr-scanner"></ion-icon>
+    Scan Code to stamp
+  </button>
 
 </ion-content>
