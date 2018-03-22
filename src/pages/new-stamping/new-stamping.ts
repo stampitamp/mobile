@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Angular2TokenService } from 'angular2-token';
+import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 
 
 @IonicPage()
@@ -14,11 +15,12 @@ export class NewStampingPage {
   stamps_count: 1;
   card_id: any = -1;
   cards: any;
-  email: string = '';
+  scannedCode: string = "";
 
   constructor(public  navCtrl: NavController,
               public  navParams: NavParams,
-              private tokenService: Angular2TokenService) {
+              private tokenService: Angular2TokenService,
+              private barcodeScanner: BarcodeScanner) {
   }
 
   ionViewWillEnter() {
@@ -44,14 +46,31 @@ export class NewStampingPage {
     }
   }
 
-  createStampings() {
+  scanCode() {
+    this.barcodeScanner.scan().then(barcodeData => {
+      this.scannedCode = barcodeData.text;
+      this.createStampings();
+    }, (err) => {
+        console.log('Error: ', err);
+    });
+  }
 
+  stampCountUp() {
+    this.stamps_count++;
+  }
+
+  stampCountDown() {
+    this.stamps_count--;
+  }
+
+  private
+
+  createStampings() {
     const params =  { count:       this.stamps_count,
                       card_id:     this.card_id,
                       address_id:  this.address_id,
-                      email:       this.email,
+                      email:       this.scannedCode,
                     }
-
     this.tokenService.post('stampings', params ).subscribe(
       res =>  {
         console.log('post stampings');
@@ -65,18 +84,7 @@ export class NewStampingPage {
     this.resetView();
   }
 
-  stampCountUp() {
-    this.stamps_count++;
-  }
-
-  stampCountDown() {
-    this.stamps_count--;
-  }
-
-  private
-
-  getAdressId = (address_id) =>
-  {
+  getAdressId = (address_id) => {
     return new Promise((resolve, reject) => {
       this.address_id = address_id;
       resolve();
@@ -86,7 +94,7 @@ export class NewStampingPage {
   resetView() {
     this.stamps_count = 1;
     this.card_id = -1;
-    this.email="";
+    this.scannedCode = "";
   }
 
 }
