@@ -20,11 +20,9 @@
     </ion-item>
   </ion-list>
 
-  <div padding>
-    <button block (click)="startNewVendingSession()"
-                  [disabled]="address_id==undefined">
-      Start Vending Session
-    </button>
-  </div>
+  <button ion-button full (click)="startNewVendingSession()"
+                [disabled]="address_id==undefined" color="primary">
+    Start Vending Session
+  </button>
 
 </ion-content>
