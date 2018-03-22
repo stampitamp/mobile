@@ -8,10 +8,10 @@
     <ion-title>Mostrar codigo QR</ion-title>
   </ion-navbar>
 </ion-header>
- 
+
 <ion-content padding>
    <ion-card *ngIf="createdCode">
-    <ngx-qrcode qrc-value="createdCode"></ngx-qrcode>
+    <ngx-qrcode [qrc-value]="createdCode"></ngx-qrcode>
     <ion-card-content>
       <p>Value: {{ createdCode }}</p>
     </ion-card-content>
