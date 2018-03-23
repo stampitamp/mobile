@@ -11,6 +11,8 @@ import { Angular2TokenService } from 'angular2-token';
 })
 export class RegisterPage {
 
+  userParams = null;
+
   public registerForm = this.fb.group({
     email: ["", Validators.required],
     password: ["", Validators.required],
@@ -36,7 +38,8 @@ export class RegisterPage {
           console.log(res);
           console.log(this.tokenService.userSignedIn());
           if(this.tokenService.userSignedIn()){
-            this.navCtrl.setRoot('MenuPage');
+            this.userParams = res;
+            this.navCtrl.setRoot('MenuPage', this.userParams);
           }
         },
         error => {
