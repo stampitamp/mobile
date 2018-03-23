@@ -28,15 +28,17 @@
 
     </ion-list>
 
-    <div padding>
-      <button block type="submit">Login</button>
-    </div>
+    <button ion-button full icon-left type="submit" color="primary">
+      <ion-icon name="log-in"></ion-icon>
+      Login
+    </button>
   </form>
 
   <form (ngSubmit)="switchToRegister($event)">
-    <div padding>
-      <button block type="submit">Registration</button>
-    </div>
+    <button ion-button full icon-left type="submit" color="secondary">
+      <ion-icon name="add-circle"></ion-icon>
+      Registration
+    </button>
   </form>
 
 </ion-content>
