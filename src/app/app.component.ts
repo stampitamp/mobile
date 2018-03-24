@@ -9,7 +9,7 @@ import { Angular2TokenService } from 'angular2-token';
 })
 
 export class MyApp {
-  rootPage:any = 'LoginPage';
+  rootPage:string = 'LoginPage';
 
   constructor( public  platform: Platform,
                public  statusBar: StatusBar,
@@ -17,7 +17,7 @@ export class MyApp {
                private tokenService: Angular2TokenService ) {
 
     this.tokenService.init({
-        apiBase:                    'https://pacific-scrubland-95509.herokuapp.com/api/v1',
+        apiBase:                    'http://localhost:3000/api/v1',
         apiPath:                    null,
 
         signInPath:                 'auth/sign_in',

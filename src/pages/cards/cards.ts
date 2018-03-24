@@ -2,6 +2,8 @@ import { Component, ViewChild, NgZone } from '@angular/core';
 import { IonicPage, NavController, NavParams, Content } from 'ionic-angular';
 import { Angular2TokenService } from 'angular2-token';
 import { App } from 'ionic-angular/components/app/app';
+import { User } from '../../providers/user/user'
+
 
 
 @IonicPage()
@@ -20,7 +22,8 @@ export class CardsPage {
               public app: App,
               public navParams: NavParams,
               private tokenService: Angular2TokenService,
-              private ngZone: NgZone ) {
+              private ngZone: NgZone,
+              private user: User ) {
   }
 
   ngOnInit() {
@@ -66,6 +69,7 @@ export class CardsPage {
 
   doLogout() {
     this.tokenService.signOut();
+    this.user.remove();
     this.app.getRootNav().setRoot('LoginPage');
   }
 

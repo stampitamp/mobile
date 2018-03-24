@@ -9,6 +9,7 @@ import { RouterModule } from '@angular/router';
 import { IonicStorageModule } from '@ionic/storage';
 
 import { MyApp } from './app.component';
+import { User } from '../providers/user/user';
 
 
 @NgModule({
@@ -32,6 +33,7 @@ import { MyApp } from './app.component';
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
+    User,
   ]
 })
 export class AppModule {}
