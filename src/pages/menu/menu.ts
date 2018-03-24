@@ -17,7 +17,7 @@ export interface PageInterface {
 })
 export class MenuPage {
   // Basic root for our content view
-  rootPage = 'TabsPage';
+  rootPage:string = 'TabsPage';
 
   user: any;
 
