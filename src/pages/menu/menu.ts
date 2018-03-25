@@ -1,5 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
-import { IonicPage, NavController, Nav, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, Nav } from 'ionic-angular';
+import { User } from '../../providers/user/user';
 
 export interface PageInterface {
   id: number;
@@ -19,8 +20,6 @@ export class MenuPage {
   // Basic root for our content view
   rootPage:string = 'TabsPage';
 
-  user: any;
-
   // Reference to the app's root nav
   @ViewChild(Nav) nav: Nav;
 
@@ -31,9 +30,7 @@ export class MenuPage {
   ];
 
   constructor(public navCtrl: NavController,
-              public navParams: NavParams) {
-
-    this.user = navParams['data'].json()['data'];
+              public user: User) {
   }
 
   openPage(page: PageInterface) {
@@ -73,7 +70,7 @@ export class MenuPage {
   }
 
   menuItemPermitted(page: PageInterface) : boolean {
-    return page.id != 3 || this.user['is_vendor'];
+    return page.id != 3 || this.user.data.is_vendor;
   }
 
 }

@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController } from 'ionic-angular';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Angular2TokenService } from 'angular2-token';
+import { User } from '../../providers/user/user'
+import 'rxjs/add/operator/map';
 
 
 @IonicPage()
@@ -11,8 +13,6 @@ import { Angular2TokenService } from 'angular2-token';
 })
 export class RegisterPage {
 
-  userParams = null;
-
   public registerForm = this.fb.group({
     email: ["", Validators.required],
     password: ["", Validators.required],
@@ -20,27 +20,17 @@ export class RegisterPage {
   });
 
   constructor(public navCtrl: NavController,
-              public navParams: NavParams,
               public fb: FormBuilder,
-              private tokenService: Angular2TokenService) {
-  }
-
-  ngOnInit() {
-    if(this.tokenService.userSignedIn()){
-      this.navCtrl.setRoot('MenuPage');
-    }
+              private tokenService: Angular2TokenService,
+              private user: User ) {
   }
 
   doRegister(e) {
-    console.log(e);
-    this.tokenService.registerAccount(this.registerForm.value).subscribe(
+    this.tokenService.registerAccount(this.registerForm.value)
+      .map(res => res.json()).subscribe(
         res =>  {
-          console.log(res);
-          console.log(this.tokenService.userSignedIn());
-          if(this.tokenService.userSignedIn()){
-            this.userParams = res;
-            this.navCtrl.setRoot('MenuPage', this.userParams);
-          }
+          this.user.safe(res, this.registerForm.value);
+          this.navCtrl.setRoot('MenuPage');
         },
         error => {
           console.log(error);
