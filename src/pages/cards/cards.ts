@@ -26,9 +26,7 @@ export class CardsPage {
               private user: User ) {
   }
 
-  ngOnInit() {
-    console.log('onInit');
-
+  ionViewWillEnter() {
     this.tokenService.get('home.json').subscribe(
 
       (res) => {
@@ -40,6 +38,10 @@ export class CardsPage {
         console.log(error)
       }
     )
+  }
+
+  toggleMenu() {
+    this.ionViewWillEnter();
   }
 
   ngAfterViewInit() {
