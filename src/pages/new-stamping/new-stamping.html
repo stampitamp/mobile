@@ -32,10 +32,8 @@
     </ion-grid>
 
     <ion-item>
-      <ion-select [(ngModel)]="card_id" cancelText="Nah" okText="Okay!" placeholder="Select Card">
-        <div *ngFor='let card of cards'>
-          <ion-option [value]="card.id" selected="false">{{card.name}}</ion-option>
-        </div>
+      <ion-select [(ngModel)]="card_id" cancelText="Nah" okText="Okay!" placeholder="Select Card" style="max-width: 100% !important;">
+        <ion-option *ngFor='let card of cards' [value]="card.id" selected="false">{{card.name}}</ion-option>
       </ion-select>
     </ion-item>
   </ion-list>
