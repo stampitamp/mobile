@@ -27,12 +27,23 @@ export class CardsPage {
   }
 
   ionViewWillEnter() {
+    this.fetchCards();
+  }
+
+  toggleMenu() {
+    this.ionViewWillEnter();
+  }
+
+  fetchCards() {
     this.tokenService.get('home.json').subscribe(
 
       (res) => {
         console.log('result');
         console.log(res.json());
-        this.cards = res.json();
+        this.ngZone.run(() => {
+          this.cards = res.json();
+        });
+
       },
       (error) => {
         console.log(error)
@@ -40,29 +51,18 @@ export class CardsPage {
     )
   }
 
-  toggleMenu() {
-    this.ionViewWillEnter();
-  }
+  fetchCardsOnRefresh(event?) {
+    this.tokenService.get('home.json').subscribe(
 
-  ngAfterViewInit() {
-    this.content.ionScroll.subscribe((data)=> {
-      if (this.content.getContentDimensions().scrollTop < 0) {
-        this.tokenService.get('home.json').subscribe(
-
-          (res) => {
-            console.log('result');
-            console.log(res.json());
-            this.ngZone.run(() => {
-              this.cards = res.json();
-            });
-
-          },
-          (error) => {
-            console.log(error)
-          }
-        )
+      (res) => {
+        this.cards = res.json();
+        event.complete();
+      },
+      (error) => {
+        console.log(error)
+        event.complete();
       }
-    });
+    )
   }
 
   ionViewDidLoad() {
