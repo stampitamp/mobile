@@ -5,15 +5,15 @@
       <ion-icon name="menu"></ion-icon>
     </button>
     </ion-buttons>
-    <ion-title>Mostrar codigo QR</ion-title>
+    <ion-title>QR Code</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-   <ion-card *ngIf="createdCode">
-    <ngx-qrcode [qrc-value]="createdCode"></ngx-qrcode>
+   <ion-card *ngIf="code">
+    <ngx-qrcode [qrc-value]="code"></ngx-qrcode>
     <ion-card-content>
-      <p>Value: {{ createdCode }}</p>
+      <p>Value: {{ code }}</p>
     </ion-card-content>
   </ion-card>
 </ion-content>

@@ -1,17 +1,17 @@
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
-import { Tab2Page } from './tab2';
+import { CodePage } from './code';
 import { NgxQRCodeModule } from 'ngx-qrcode2';
 
 @NgModule({
   declarations: [
-    Tab2Page,
+    CodePage,
   ],
   imports: [
-    IonicPageModule.forChild(Tab2Page),
+    IonicPageModule.forChild(CodePage),
     NgxQRCodeModule,
   ],
   providers: [
   ],
 })
-export class Tab2PageModule {}
+export class CodePageModule {}

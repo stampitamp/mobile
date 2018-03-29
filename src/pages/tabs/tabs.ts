@@ -9,7 +9,7 @@ import { IonicPage, NavParams } from 'ionic-angular';
 export class TabsPage {
 
   tab1Root: any = 'CardsPage';
-  tab2Root: any = 'Tab2Page';
+  tab2Root: any = 'CodePage';
   tab3Root: any = 'NewStampingPage';
   myIndex: number;
 

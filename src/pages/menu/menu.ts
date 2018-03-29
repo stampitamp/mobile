@@ -25,7 +25,7 @@ export class MenuPage {
 
   pages: PageInterface[] = [
     { id: 1, title: 'Bonuskarten',       pageName: 'TabsPage', tabComponent: 'CardsPage',       index: 0, icon: 'albums' },
-    { id: 2, title: 'QR-Code',           pageName: 'TabsPage', tabComponent: 'Tab2Page',        index: 1, icon: 'finger-print' },
+    { id: 2, title: 'QR-Code',           pageName: 'TabsPage', tabComponent: 'CodePage',        index: 1, icon: 'finger-print' },
     { id: 3, title: 'Stempel verwalten', pageName: 'TabsPage', tabComponent: 'NewStampingPage', index: 2, icon: 'hammer' },
   ];
 
