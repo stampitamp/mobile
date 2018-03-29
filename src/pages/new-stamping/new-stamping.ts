@@ -47,12 +47,15 @@ export class NewStampingPage {
   }
 
   scanCode() {
-    this.barcodeScanner.scan().then(barcodeData => {
-      this.scannedCode = barcodeData.text;
-      this.createStampings();
-    }, (err) => {
-        console.log('Error: ', err);
-    });
+    // this.barcodeScanner.scan().then(barcodeData => {
+    //   this.scannedCode = barcodeData.text;
+    //   this.createStampings();
+    // }, (err) => {
+    //     console.log('Error: ', err);
+    // });
+
+    this.scannedCode = "user_1@example.de";
+    this.createStampings();
   }
 
   stampCountUp() {

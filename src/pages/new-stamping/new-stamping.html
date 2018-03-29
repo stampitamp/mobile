@@ -5,7 +5,7 @@
       <ion-icon name="menu"></ion-icon>
     </button>
     </ion-buttons>
-    <ion-title>new stamping</ion-title>
+    <ion-title>Stempel verwalten</ion-title>
   </ion-navbar>
 </ion-header>
 
@@ -32,7 +32,7 @@
     </ion-grid>
 
     <ion-item>
-      <ion-select [(ngModel)]="card_id" cancelText="Nah" okText="Okay!" placeholder="Select Card" style="max-width: 100% !important;">
+      <ion-select [(ngModel)]="card_id" cancelText="Nah" okText="Okay!" placeholder="Bonuskarte auswählen" style="max-width: 100% !important;">
         <ion-option *ngFor='let card of cards' [value]="card.id" selected="false">{{card.name}}</ion-option>
       </ion-select>
     </ion-item>
@@ -40,7 +40,7 @@
 
   <button ion-button full icon-left (click)="scanCode()" [disabled]="card_id==-1" color="primary">
     <ion-icon name="qr-scanner"></ion-icon>
-    Scan Code to stamp
+    Code scannen und stempeln
   </button>
 
 </ion-content>

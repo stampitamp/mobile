@@ -24,9 +24,9 @@ export class MenuPage {
   @ViewChild(Nav) nav: Nav;
 
   pages: PageInterface[] = [
-    { id: 1, title: 'Tarjetas',          pageName: 'TabsPage', tabComponent: 'CardsPage', index: 0, icon: 'albums' },
-    { id: 2, title: 'Mostrar código QR', pageName: 'TabsPage', tabComponent: 'Tab2Page', index: 1, icon: 'finger-print' },
-    { id: 3, title: 'Generar estampas',  pageName: 'TabsPage', tabComponent: 'NewStampingPage', index: 2, icon: 'hammer' },
+    { id: 1, title: 'Bonuskarten',       pageName: 'TabsPage', tabComponent: 'CardsPage',       index: 0, icon: 'albums' },
+    { id: 2, title: 'QR-Code',           pageName: 'TabsPage', tabComponent: 'Tab2Page',        index: 1, icon: 'finger-print' },
+    { id: 3, title: 'Stempel verwalten', pageName: 'TabsPage', tabComponent: 'NewStampingPage', index: 2, icon: 'hammer' },
   ];
 
   constructor(public navCtrl: NavController,

@@ -1,7 +1,7 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>new vending session</ion-title>
+    <ion-title>Verkaufsschicht</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -11,8 +11,7 @@
 
   <ion-list>
     <ion-item>
-      <ion-label>Addresses</ion-label>
-      <ion-select [(ngModel)]="address_id" cancelText="Nah" okText="Okay!" style="max-width: 100% !important;">
+      <ion-select [(ngModel)]="address_id" cancelText="Nah" okText="Okay!" placeholder="Adresse auswählen" style="max-width: 100% !important;">
         <div *ngFor='let address of addresses'>
           <ion-option value="{{address.address.id}}">{{address.company_name}} | {{address.address.street}}</ion-option>
         </div>
@@ -22,7 +21,7 @@
 
   <button ion-button full (click)="startNewVendingSession()"
                 [disabled]="address_id==undefined" color="primary">
-    Start Vending Session
+    Neue Schicht beginnen
   </button>
 
 </ion-content>
