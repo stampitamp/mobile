@@ -1,4 +1,4 @@
-import { Component, ViewChild, NgZone } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { IonicPage, NavController, NavParams, Content } from 'ionic-angular';
 import { Angular2TokenService } from 'angular2-token';
 import { App } from 'ionic-angular/components/app/app';
@@ -22,7 +22,6 @@ export class CardsPage {
               public app: App,
               public navParams: NavParams,
               private tokenService: Angular2TokenService,
-              private ngZone: NgZone,
               private user: User ) {
   }
 
@@ -34,33 +33,19 @@ export class CardsPage {
     this.ionViewWillEnter();
   }
 
-  fetchCards() {
-    this.tokenService.get('home.json').subscribe(
-
-      (res) => {
-        console.log('result');
-        console.log(res.json());
-        this.ngZone.run(() => {
-          this.cards = res.json();
-        });
-
-      },
-      (error) => {
-        console.log(error)
-      }
-    )
-  }
-
-  fetchCardsOnRefresh(event?) {
+  fetchCards(event?) {
     this.tokenService.get('home.json').subscribe(
 
       (res) => {
         this.cards = res.json();
-        event.complete();
+        if (event) {
+          event.complete();
+        }
       },
       (error) => {
-        console.log(error)
-        event.complete();
+        if (event) {
+          event.complete();
+        }
       }
     )
   }
