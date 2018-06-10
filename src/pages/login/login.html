@@ -1,44 +1,35 @@
-<ion-header>
+<ion-content padding class="main-gradient-bg">
 
-  <ion-navbar>
-    <ion-title>login</ion-title>
-  </ion-navbar>
+	<ion-row>
+		<ion-col col-10 offset-1 margin-top margin-bottom>
+			<img src="./assets/imgs/logo-white.png" alt="" class="logo" margin-top margin-bottom>
+		</ion-col>
+	</ion-row>
 
-</ion-header>
+	<form [formGroup]="loginForm" (ngSubmit)="doLogin($event)" margin-top>
+		<ion-list>
+			<ion-item>
+				<ion-input type="email" formControlName="email" placeholder="Email"></ion-input>
+			</ion-item>
+			<ion-item>
+				<ion-input type="password" formControlName="password" placeholder="Password"></ion-input>
+			</ion-item>
+		</ion-list>
 
+		<button ion-button full icon-left type="submit" color="primary">
+			<ion-icon name="log-in"></ion-icon>
+			Login
+		</button>
+	</form>
 
-<ion-content padding>
-
-  <form [formGroup]="loginForm" (ngSubmit)="doLogin($event)">
-    <ion-list>
-
-      <ion-item>
-        <ion-input  type=             "email"
-                    formControlName=  "email"
-                    placeholder=      "Email">
-        </ion-input>
-      </ion-item>
-
-      <ion-item>
-        <ion-input  type=             "password"
-                    formControlName=  "password"
-                    placeholder=      "Password">
-        </ion-input>
-      </ion-item>
-
-    </ion-list>
-
-    <button ion-button full icon-left type="submit" color="primary">
-      <ion-icon name="log-in"></ion-icon>
-      Login
-    </button>
-  </form>
-
-  <form (ngSubmit)="switchToRegister($event)">
-    <button ion-button full icon-left type="submit" color="secondary">
-      <ion-icon name="add-circle"></ion-icon>
-      Registration
-    </button>
-  </form>
 
 </ion-content>
+
+<ion-footer padding>
+	<form (ngSubmit)="switchToRegister($event)">
+		<button ion-button full icon-left type="submit" color="secondary">
+			<ion-icon name="add-circle"></ion-icon>
+			Registration
+		</button>
+	</form>
+</ion-footer>

@@ -1,20 +1,27 @@
 <ion-menu [content]="content">
-  <ion-header>
-    <ion-toolbar>
-      <ion-title>Menu</ion-title>
-    </ion-toolbar>
-  </ion-header>
+	<ion-header>
+		<ion-toolbar>
+			<ion-title>Menu</ion-title>
+		</ion-toolbar>
+	</ion-header>
 
-  <ion-content>
-    <ion-list>
-      <div *ngFor="let p of pages">
-        <button ion-item menuClose *ngIf="menuItemPermitted(p)" (click)="openPage(p) ">
-          <ion-icon item-start *ngIf="false" [name]="p.icon" [color]="isActive(p)"></ion-icon>
-          {{ p.title }}
-        </button>
-      </div>
-    </ion-list>
-  </ion-content>
+	<ion-content>
+		<ion-list>
+			<div *ngFor="let p of pages">
+				<button ion-item menuClose *ngIf="menuItemPermitted(p)" (click)="openPage(p) ">
+					<ion-icon item-start *ngIf="false" [name]="p.icon" [color]="isActive(p)"></ion-icon>
+					{{ p.title }}
+				</button>
+			</div>
+		</ion-list>
+	</ion-content>
+
+	<ion-footer padding>
+		<button ion-button outline block icon-left (click)="doLogout()" type="submit" color="primary">
+			<ion-icon name="log-out"></ion-icon>
+			Logout
+		</button>
+	</ion-footer>
 </ion-menu>
 
 <!-- main navigation -->

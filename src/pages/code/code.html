@@ -1,20 +1,19 @@
 <ion-header>
-  <ion-navbar>
-    <ion-buttons start>
-      <button ion-button menuToggle>
-      <ion-icon name="menu"></ion-icon>
-    </button>
-    </ion-buttons>
-    <ion-title>QR Code</ion-title>
-  </ion-navbar>
+	<ion-navbar>
+		<ion-buttons start>
+			<button ion-button menuToggle>
+				<ion-icon name="menu"></ion-icon>
+			</button>
+		</ion-buttons>
+		<ion-title>QR Code</ion-title>
+	</ion-navbar>
 </ion-header>
 
-<ion-content padding>
-   <ion-card *ngIf="code">
-    <ngx-qrcode [qrc-value]="code"></ngx-qrcode>
-    <ion-card-content>
-      <p>Value: {{ code }}</p>
-    </ion-card-content>
-  </ion-card>
+<ion-content padding class="main-gradient-bg">
+	<ion-card *ngIf="code">
+		<ngx-qrcode [qrc-value]="code"></ngx-qrcode>
+		<ion-card-content>
+			<p>Value: {{ code }}</p>
+		</ion-card-content>
+	</ion-card>
 </ion-content>
-

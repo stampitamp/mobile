@@ -1,32 +1,34 @@
 <ion-header>
-  <ion-navbar>
-    <ion-buttons start>
-      <button ion-button menuToggle (click)="toggleMenu()">
-      <ion-icon name="menu"></ion-icon>
-    </button>
-    </ion-buttons>
-    <ion-title>Bonuskarten</ion-title>
-  </ion-navbar>
+	<ion-navbar>
+		<ion-buttons start>
+			<button ion-button menuToggle (click)="toggleMenu()">
+				<ion-icon name="menu"></ion-icon>
+			</button>
+		</ion-buttons>
+		<ion-title>Bonuskarten</ion-title>
+	</ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  <ion-refresher (ionRefresh)="fetchCardsOnRefresh($event)">
-    <ion-refresher-content></ion-refresher-content>
-  </ion-refresher>
+<ion-content class="card-container">
+	<ion-refresher (ionRefresh)="fetchCardsOnRefresh($event)">
+		<ion-refresher-content></ion-refresher-content>
+	</ion-refresher>
 
-  <ion-card *ngFor='let card of cards'>
-    <ion-card-header>
-       <button ion-item>
-      <ion-icon name="cafe" item-start></ion-icon> {{ card.card.name }}
-    </button>
-    </ion-card-header>
-    <ion-card-content>
-      {{card.current_stamps}}/{{card.card.stamps_count}}
-    </ion-card-content>
-  </ion-card>
+	<div class="slides-container" padding-top>
+		<ion-slides class="cards-slider" pager="true">
+			<ion-slide *ngFor='let card of cards' class=" card-slide" margin-bottom padding-bottom>
 
-  <button ion-button full icon-left (click)="doLogout()" type="submit" color="primary">
-    <ion-icon name="log-out"></ion-icon>
-    Logout
-  </button>
+				<ion-card margin-top margin-bottom>
+					<ion-card-header>
+						<ion-icon name="cafe" item-start></ion-icon> {{ card.card.name }}
+					</ion-card-header>
+					<ion-card-content>
+						Current stamps: {{card.current_stamps}}/{{card.card.stamps_count}}
+					</ion-card-content>
+				</ion-card>
+
+			</ion-slide>
+		</ion-slides>
+	</div>
+
 </ion-content>

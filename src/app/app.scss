@@ -14,3 +14,7 @@
 // To declare rules for a specific mode, create a child rule
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
+
+.main-gradient-bg {
+	background-image: linear-gradient(to right, #ff6c14, #ff8106, #ff9400, #ffa700, #ffb902);
+}

@@ -8,71 +8,65 @@ import { User } from '../../providers/user/user'
 
 @IonicPage()
 @Component({
-  selector: 'page-cards',
-  templateUrl: 'cards.html',
+	selector: 'page-cards',
+	templateUrl: 'cards.html',
 })
 
 export class CardsPage {
 
-  cards: any;
+	cards: any;
 
-  @ViewChild(Content) content: Content;
+	@ViewChild(Content) content: Content;
 
-  constructor(public navCtrl: NavController,
-              public app: App,
-              public navParams: NavParams,
-              private tokenService: Angular2TokenService,
-              private ngZone: NgZone,
-              private user: User ) {
-  }
+	constructor(public navCtrl: NavController,
+		public app: App,
+		public navParams: NavParams,
+		private tokenService: Angular2TokenService,
+		private ngZone: NgZone,
+		private user: User) {
+	}
 
-  ionViewWillEnter() {
-    this.fetchCards();
-  }
+	ionViewWillEnter() {
+		this.fetchCards();
+	}
 
-  toggleMenu() {
-    this.ionViewWillEnter();
-  }
+	toggleMenu() {
+		this.ionViewWillEnter();
+	}
 
-  fetchCards() {
-    this.tokenService.get('home.json').subscribe(
+	fetchCards() {
+		this.tokenService.get('home.json').subscribe(
 
-      (res) => {
-        console.log('result');
-        console.log(res.json());
-        this.ngZone.run(() => {
-          this.cards = res.json();
-        });
+			(res) => {
+				console.log('result');
+				console.log(res.json());
+				this.ngZone.run(() => {
+					this.cards = res.json();
+				});
 
-      },
-      (error) => {
-        console.log(error)
-      }
-    )
-  }
+			},
+			(error) => {
+				console.log(error)
+			}
+		)
+	}
 
-  fetchCardsOnRefresh(event?) {
-    this.tokenService.get('home.json').subscribe(
+	fetchCardsOnRefresh(event?) {
+		this.tokenService.get('home.json').subscribe(
 
-      (res) => {
-        this.cards = res.json();
-        event.complete();
-      },
-      (error) => {
-        console.log(error)
-        event.complete();
-      }
-    )
-  }
+			(res) => {
+				this.cards = res.json();
+				event.complete();
+			},
+			(error) => {
+				console.log(error)
+				event.complete();
+			}
+		)
+	}
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad Tab1Page');
-  }
-
-  doLogout() {
-    this.tokenService.signOut();
-    this.user.remove();
-    this.app.getRootNav().setRoot('LoginPage');
-  }
+	ionViewDidLoad() {
+		console.log('ionViewDidLoad Tab1Page');
+	}
 
 }
