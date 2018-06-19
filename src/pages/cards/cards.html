@@ -16,9 +16,8 @@
 
 	<div class="slides-container" padding-top>
 		<ion-slides class="cards-slider" pager="true">
-			<ion-slide *ngFor='let card of cards' class=" card-slide" margin-bottom padding-bottom>
-
-				<ion-card margin-top margin-bottom>
+			<ion-slide *ngFor='let card of cards; let i = index' class=" card-slide" margin-bottom padding-bottom>
+				<ion-card margin-top margin-bottom (click)="selectCard(i)">
 					<ion-card-header>
 						<ion-icon name="cafe" item-start></ion-icon> {{ card.card.name }}
 					</ion-card-header>
@@ -29,6 +28,54 @@
 
 			</ion-slide>
 		</ion-slides>
+	</div>
+
+	<div class="selected-card">
+		<ion-card *ngIf="!selectedCard" margin-top>
+			<ion-card-content padding text-center>
+				<ion-icon name="apps"></ion-icon>
+				<p>
+					Select a card
+				</p>
+			</ion-card-content>
+		</ion-card>
+
+		<ion-card *ngIf="selectedCard">
+			<img src="https://ionicframework.com/dist/preview-app/www/assets/img/advance-card-map-madison.png">
+			<ion-fab right top>
+				<button ion-fab>
+					<ion-icon name="pin"></ion-icon>
+				</button>
+			</ion-fab>
+			<ion-item>
+				<ion-avatar item-start>
+					<ion-icon name="cafe" item-start></ion-icon>
+				</ion-avatar>
+				<h2>{{selectedCard.card.name}}</h2>
+				<p>{{selectedCard.current_stamps}} / {{selectedCard.card.stamps_count }} </p>
+			</ion-item>
+			<ion-card-content>
+				{{selectedCard.card.description}}
+				<p>
+					Full card: 6 Donuts
+				</p>
+			</ion-card-content>
+
+			<ion-row>
+				<ion-col>
+					<div>
+						Updated on: {{selectedCard.newest_stamp | date:'shortDate'}}
+					</div>
+				</ion-col>
+				<ion-col center text-center>
+					<button ion-button icon-start clear small>
+						<ion-icon name="trophy"></ion-icon>
+						<div>Exchange</div>
+					</button>
+				</ion-col>
+			</ion-row>
+
+		</ion-card>
 	</div>
 
 </ion-content>

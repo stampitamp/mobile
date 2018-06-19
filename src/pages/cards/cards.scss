@@ -10,4 +10,10 @@ page-cards {
 	.card-container {
 		background: #fb8135;
 	}
+
+	.selected-card {
+		ion-card {
+			position: relative;
+		}
+	}
 }

@@ -15,6 +15,7 @@ import { User } from '../../providers/user/user'
 export class CardsPage {
 
 	cards: any;
+	selectedCard: any;
 
 	@ViewChild(Content) content: Content;
 
@@ -63,6 +64,10 @@ export class CardsPage {
 				event.complete();
 			}
 		)
+	}
+
+	selectCard(index: number) {
+		this.selectedCard = this.cards[index];
 	}
 
 	ionViewDidLoad() {
